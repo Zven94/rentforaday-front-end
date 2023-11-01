@@ -1,0 +1,45 @@
+nav a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: bolder;
+  & p {
+    padding:0.5rem 0;
+  }
+}
+
+nav a p:hover {
+  background-color: var(--green);
+  transition: all 0.2s;
+  color: white;
+}
+
+nav a p:active {
+  background-color: var(--green-hover);
+}
+
+.offcanvas-body {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.closeMenu, .openBtn {
+  position: absolute; 
+  bottom: 5rem;
+}
+
+.closeMenu {
+  right: -3.5rem;
+}
+
+.footer {
+  display: inline;
+  position: absolute;
+  bottom: 0px;
+  left: 3rem;
+}
+
+.social__media {
+  width: 1.5rem;
+  margin: 2rem 1rem 1rem 0;
+}
