@@ -24,6 +24,16 @@ function Sidebar() {
             <NavLink to="reservation_list"><p>My reservations</p></NavLink>
             <NavLink to=""><p>Log out</p></NavLink>
           </div>
+          <div className="footer">
+            <div className="social text-center">
+              <img src={socialMediaIcons.Facebook} alt="facebook" className="social__media" />
+              <img src={socialMediaIcons.Pinterest} alt="pinterest" className="social__media" />
+              <img src={socialMediaIcons.X} alt="threads" className="social__media" />
+              <img src={socialMediaIcons.Vimeo} alt="vimeo" className="social__media" />
+              <img src={socialMediaIcons.Threads} alt="x" className="social__media" />
+            </div>
+            <p>@ 2023 Ruth, Nico & César - Microverse</p>
+          </div>
           <button className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
             <img src={socialMediaIcons.Sidebar} alt="button" className="closeMenu" />
           </button>
