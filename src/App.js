@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import ReservationsList from './components/ReservationsList';
+import AddReserve from './components/AddReserve';
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       // {
-      //   path: '/',
+      //   path: 'items',
       //   element: <Carousel />,
       // },
       // {
@@ -30,10 +31,10 @@ const router = createBrowserRouter([
       //   path: 'add_item',
       //     element: <AddItem />,
       //   },
-      //   {
-      //     path: 'add_reserve',
-      //       element: <AddReserve />,
-      //     },
+      {
+        path: 'add_reserve',
+        element: <AddReserve />,
+      },
       {
         path: 'reservation_list',
         element: <ReservationsList />,
