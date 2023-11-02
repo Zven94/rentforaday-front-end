@@ -2,8 +2,9 @@ nav a {
   text-decoration: none;
   color: var(--dark);
   font-weight: bolder;
+
   & p {
-    padding:0.5rem 0;
+    padding: 0.5rem 0;
   }
 }
 
@@ -23,23 +24,54 @@ nav a p:active {
   text-align: center;
 }
 
-.closeMenu, .openBtn {
-  position: absolute; 
-  bottom: 5rem;
+.openBtn img,
+.closeMenu img {
+  transition: all 0.4s;
+  width: 1.5rem;
 }
 
+.closeMenu:hover img:first-child {
+  transform: rotate(45deg) translate(0.4rem, 0.4rem);
+}
+
+.closeMenu:hover img:nth-child(3) {
+  display: none;
+}
+
+.closeMenu:hover img:last-child {
+  transform: rotate(-45deg) translate(0.1rem, -0.3rem);
+}
+
+.openBtn,
 .closeMenu {
-  right: -3.5rem;
+  transition: all 0.4s;
+  background: none;
+  border: none;
+  line-height: 0.4rem;
+  width: 4rem;
 }
 
-.footer {
+.openBtn:hover,
+.closeMenu:hover {
+  transform: scale(1.2) translateX(0.2rem);
+}
+
+.openBtn:hover img:first-child {
+  transform: rotate(44deg) translate(1.2rem, -0.65rem) scaleX(-0.6);
+}
+
+.openBtn:hover img:last-child {
+  transform: rotate(-35deg) translate(1.2rem, 0.6rem) scaleX(-0.6);
+}
+
+.navFooter {
   display: inline;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: 3rem;
 }
 
-.social__media {
+.social {
   width: 1.5rem;
   margin: 2rem 1rem 1rem 0;
 }
