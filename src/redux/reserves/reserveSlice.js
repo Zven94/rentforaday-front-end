@@ -7,8 +7,10 @@ const initialState = {
   selectedItem: '',
   selectedCity: '',
   selectedDate: '',
+  itemDetail: null,
   reserves: [],
   items: [],
+  itemsByCity: [],
   isLoading: false,
   error: undefined,
   status: undefined,
@@ -26,6 +28,10 @@ const reserveSlice = createSlice({
     },
     setSelectedDate(state, action) {
       state.selectedDate = action.payload;
+    },
+    setItemDetail(state, action) {
+      const itemId = Object.values(state.items).find((object) => object.id === action.payload);
+      state.itemDetail = itemId;
     },
   },
   extraReducers: (builder) => {
