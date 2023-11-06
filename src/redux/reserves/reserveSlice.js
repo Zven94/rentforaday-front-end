@@ -7,11 +7,13 @@ const initialState = {
   selectedItem: '',
   selectedCity: '',
   selectedDate: '',
+  isReserved: false,
   itemDetail: null,
   reserves: [],
   items: [],
   itemsByCity: [],
   isLoading: false,
+  isDeleting: false,
   error: undefined,
   status: undefined,
 };
@@ -32,6 +34,15 @@ const reserveSlice = createSlice({
     setItemDetail(state, action) {
       const itemId = Object.values(state.items).find((object) => object.id === action.payload);
       state.itemDetail = itemId;
+    },
+    setIsReserved(state) {
+      state.isReserved = false;
+    },
+    setStatus(state) {
+      state.status = undefined;
+    },
+    setIsDeleting(state) {
+      state.isDeleting = false;
     },
   },
   extraReducers: (builder) => {
@@ -88,6 +99,7 @@ const reserveSlice = createSlice({
       })
       .addCase(postReserve.fulfilled, (state) => {
         state.isLoading = false;
+        state.isReserved = true;
         state.error = undefined;
       })
       .addCase(postReserve.pending, (state) => {
