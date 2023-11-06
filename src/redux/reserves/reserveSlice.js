@@ -29,7 +29,20 @@ const reserveSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-
+      .addCase(deleteReserve.fulfilled, (state, action) => {
+        state.isDeleting = true;
+        state.reserves = state.reserves.filter((reserve) => reserve.id !== action.payload);
+        state.isLoading = false;
+        state.error = undefined;
+      })
+      .addCase(deleteReserve.pending, (state) => {
+        state.isLoading = true;
+        state.error = undefined;
+      })
+      .addCase(deleteReserve.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
       .addCase(fetchItems.fulfilled, (state, action) => {
         state.isLoading = false;
         state.items = action.payload;
@@ -55,6 +68,7 @@ const reserveSlice = createSlice({
       })
       .addCase(postReserve.fulfilled, (state) => {
         state.isLoading = false;
+
         state.error = undefined;
       })
       .addCase(postReserve.pending, (state) => {
@@ -69,5 +83,9 @@ const reserveSlice = createSlice({
   },
 });
 
+export const {
+  setSelectedItem, setSelectedCity, setSelectedDate, setItemDetail,
+  setIsReserved, setStatus, setIsDeleting,
+} = reserveSlice.actions;
 export default reserveSlice.reducer;
 export { fetchReserves, deleteReserve };
