@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchItems } from '../redux/reserves/apiReserves';
+import { fetchItems, postReserve } from '../redux/reserves/apiReserves';
 import {
   setSelectedItem, setSelectedCity, setSelectedDate, setItemDetail, setIsReserved, setStatus,
 } from '../redux/reserves/reserveSlice';
@@ -16,6 +16,9 @@ function AddReserve() {
   const {
     items, itemsByCity, selectedItem, selectedCity, selectedDate,
   } = useSelector((state) => state.reserves);
+
+  // get item city by id
+  const itemCity = itemId ? items.find((item) => item.id === itemId)?.city : null;
 
   // options select city, save city state, reset isReserved state
   const handleSelectCity = (event) => {
@@ -33,6 +36,15 @@ function AddReserve() {
   const handleSelectedDate = (event) => {
     dispatch(setSelectedDate(event.target.value));
     dispatch(setStatus());
+  };
+
+  // post reserve
+  const handleSubmit = () => {
+    dispatch(postReserve({
+      item_id: itemId ?? selectedItem,
+      date: selectedDate,
+      city: itemCity ?? selectedCity,
+    }));
   };
 
   // fetch items and reserves
@@ -79,7 +91,7 @@ function AddReserve() {
             <form>
               {showSelect}
 
-              <button className="btn " type="button">Reserve Now</button>
+              <button className="btn " type="button" onClick={() => handleSubmit()}>Reserve Now</button>
             </form>
             <div className="itemContent container-sm text-center">
               {itemContent}
