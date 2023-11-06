@@ -4,7 +4,11 @@ import {
 } from './apiReserves';
 
 const initialState = {
+  selectedItem: '',
+  selectedCity: '',
+  selectedDate: '',
   reserves: [],
+  items: [],
   isLoading: false,
   error: undefined,
   status: undefined,
@@ -13,7 +17,17 @@ const initialState = {
 const reserveSlice = createSlice({
   name: 'reserves',
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedItem(state, action) {
+      state.selectedItem = action.payload;
+    },
+    setSelectedCity(state, action) {
+      state.selectedCity = action.payload;
+    },
+    setSelectedDate(state, action) {
+      state.selectedDate = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchReserves.fulfilled, (state, action) => {
@@ -68,7 +82,6 @@ const reserveSlice = createSlice({
       })
       .addCase(postReserve.fulfilled, (state) => {
         state.isLoading = false;
-
         state.error = undefined;
       })
       .addCase(postReserve.pending, (state) => {
