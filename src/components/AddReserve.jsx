@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchItems } from '../redux/reserves/apiReserves';
-import { setItemDetail } from '../redux/reserves/reserveSlice';
+import {
+  setSelectedItem, setSelectedCity, setSelectedDate, setItemDetail, setIsReserved, setStatus,
+} from '../redux/reserves/reserveSlice';
 import '../styles/addReserve.css';
 
 function AddReserve() {
@@ -12,9 +14,26 @@ function AddReserve() {
   let itemContent;
 
   const {
-    items, itemsByCity, selectedItem, selectedCity,
-    selectedDate,
+    items, itemsByCity, selectedItem, selectedCity, selectedDate,
   } = useSelector((state) => state.reserves);
+
+  // options select city, save city state, reset isReserved state
+  const handleSelectCity = (event) => {
+    dispatch(setSelectedCity(event.target.value));
+    dispatch(setIsReserved());
+  };
+
+  // options select item, save item state, set item details by id, reset isReserved state
+  const handleSelectItem = (event) => {
+    dispatch(setSelectedItem(Number(event.target.value)));
+    dispatch(setIsReserved());
+  };
+
+  // options select date, save date state, reset status state
+  const handleSelectedDate = (event) => {
+    dispatch(setSelectedDate(event.target.value));
+    dispatch(setStatus());
+  };
 
   // fetch items and reserves
   useEffect(() => {
@@ -25,13 +44,13 @@ function AddReserve() {
   // show select city and item if itemId is 0, else show select item
   if (itemId) {
     showSelect = (
-      <input className="form-control mb-3" type="date" placeholder="Date" aria-label="date" value={selectedDate} />
+      <input className="form-control mb-3" type="date" placeholder="Date" aria-label="date" value={selectedDate} onChange={handleSelectedDate} />
     );
   } else {
     showSelect = (
       <>
         <div className="input-group mb-3">
-          <select className="form-select" id="inputGroupSelect01" value={selectedCity}>
+          <select className="form-select" id="inputGroupSelect01" value={selectedCity} onChange={handleSelectCity}>
             <option value="">Select a City</option>
             {itemsByCity.map((city) => (
               <option value={city.city} key={city.id}>{city.city}</option>
@@ -39,14 +58,14 @@ function AddReserve() {
           </select>
         </div>
         <div className="input-group mb-3">
-          <select className="form-select" id="inputGroupSelect02" value={selectedItem}>
+          <select className="form-select" id="inputGroupSelect02" value={selectedItem} onChange={handleSelectItem}>
             <option value="">Select an Item</option>
             {items.filter((city) => city.city === selectedCity).map((city) => (
               <option value={city.id} key={city.id}>{city.name}</option>
             ))}
           </select>
         </div>
-        <input className="input-group mb-3" type="date" placeholder="Date" aria-label="date" value={selectedDate} />
+        <input className="input-group mb-3" type="date" placeholder="Date" aria-label="date" value={selectedDate} onChange={handleSelectedDate} />
       </>
     );
   }
