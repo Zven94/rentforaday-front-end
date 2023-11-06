@@ -24,7 +24,6 @@ const postReserve = createAsyncThunk('reserves/postReserve', async (dataObject, 
     };
 
     const response = await axios.request(options);
-    console.log(response.status);
     return response.status;
   } catch (error) {
     return rejectWithValue(error.response.data);

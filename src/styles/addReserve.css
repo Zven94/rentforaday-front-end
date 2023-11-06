@@ -9,7 +9,7 @@
   background-image: url(../assets/city.jpg);
   background-size: cover;
   z-index: 0;
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -17,24 +17,24 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #98c210ce ;
+    background-color: #98c210ce;
   }
-  
+
   & h1 {
-      color: var(--light-grey);
-      font-size: 3rem;
-      margin-bottom: 4rem;
-      position: relative;
+    color: var(--light-grey);
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    position: relative;
   }
 
   & form {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 80%;
-      padding: 2rem;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 2rem;
   }
 
   & .input-group {
@@ -42,56 +42,58 @@
     min-width: 8rem;
   }
 
-  & input, select, button {
-      width: 20%;
-      padding: 1.5rem;
-      margin-left: 0.5rem;
-      font-size: 1rem;
-      border: 2px solid var(--light-grey);
-      border-radius: 3rem;
-      z-index: 1;
-      background-color: rgba(152, 194, 16, 0.877);
-      color: var(--light-grey);
+  & input,
+  select,
+  button {
+    width: 20%;
+    padding: 1.5rem;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--light-grey);
+    border-radius: 3rem;
+    z-index: 1;
+    background-color: rgba(152, 194, 16, 0.877);
+    color: var(--light-grey);
   }
 
   & button {
-      background-color: white;
-      color: var(--green);
-      min-width: 10rem;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 1;
-      margin-bottom: 1rem;
+    background-color: white;
+    color: var(--green);
+    min-width: 10rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+    margin-bottom: 1rem;
 
-      &:hover {
-          background-color: var(--green-hover);
-          color: white;
-      }
+    &:hover {
+      background-color: var(--green-hover);
+      color: white;
+    }
   }
 
   & .itemContent {
-      color: var(--light-grey);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
+    color: var(--light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
 
-      & p {
-        font-size: 1.5rem;
-      }
+    & p {
+      font-size: 1.5rem;
+    }
 
-      & img {
-        width: 50%;
-        max-width: 300px;
-        border-radius: 10rem;
-      }
+    & img {
+      width: 50%;
+      max-width: 300px;
+      border-radius: 10rem;
+    }
 
-      & div {
-        margin-left: 1rem;
-        min-width: 30rem;
-      }
+    & div {
+      margin-left: 1rem;
+      min-width: 30rem;
+    }
   }
 }
 
@@ -111,7 +113,9 @@
       margin-bottom: 1rem;
     }
 
-    & input, select, button {
+    & input,
+    select,
+    button {
       width: 100%;
     }
 

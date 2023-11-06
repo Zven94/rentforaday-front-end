@@ -119,4 +119,3 @@ export const {
   setIsReserved, setStatus, setIsDeleting,
 } = reserveSlice.actions;
 export default reserveSlice.reducer;
-export { fetchReserves, deleteReserve };
