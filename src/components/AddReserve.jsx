@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Spinner from './Spinner';
 import { fetchItems, postReserve } from '../redux/reserves/apiReserves';
 import {
   setSelectedItem, setSelectedCity, setSelectedDate, setItemDetail, setIsReserved, setStatus,
@@ -14,7 +15,8 @@ function AddReserve() {
   let itemContent;
 
   const {
-    items, itemsByCity, selectedItem, selectedCity, selectedDate,
+    items, itemsByCity, isLoading, selectedItem, selectedCity, selectedDate, status,
+    itemDetail,
   } = useSelector((state) => state.reserves);
 
   // get item city by id
@@ -52,6 +54,37 @@ function AddReserve() {
     dispatch(fetchItems());
     dispatch(setItemDetail(selectedItem));
   }, [dispatch, selectedItem]);
+
+  // show item detail if itemDetail is true,and if status and isLoading are false
+  if (status) {
+    itemContent = (
+      <p>{status}</p>
+    );
+  } else if (isLoading) {
+    itemContent = (<Spinner />);
+  } else if (itemDetail) {
+    itemContent = (
+      <div className="itemContent">
+        <img src={itemDetail.image} alt={itemDetail.name} />
+        <div className="text-center">
+          <h2>{itemDetail.name}</h2>
+          <p>
+            {itemDetail.description}
+          </p>
+          <p className="fw-bold">
+            Price: $
+            {itemDetail.price}
+          </p>
+        </div>
+      </div>
+    );
+  } else {
+    itemContent = (
+      <>
+        <p>Selected Reserve</p>
+      </>
+    );
+  }
 
   // show select city and item if itemId is 0, else show select item
   if (itemId) {
