@@ -28,7 +28,27 @@ const reserveSlice = createSlice({
       .addCase(fetchReserves.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
-      });
+      })
+
+      .addCase(fetchItems.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload;
+        const uniqueCityObject = {};
+        state.items.forEach((item) => {
+          const { city } = item;
+          if (!uniqueCityObject[city]) {
+            uniqueCityObject[city] = item;
+          }
+        });
+        state.itemsByCity = Object.values(uniqueCityObject);
+
+        state.isLoading = false;
+        state.error = undefined;
+      })
+      .addCase(fetchItems.pending, (state) => {
+        state.isLoading = true;
+        state.error = undefined;
+      })
   },
 });
 
