@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Spinner from './Spinner';
 import { fetchItems, postReserve } from '../redux/reserves/apiReserves';
 import {
@@ -10,13 +11,14 @@ import '../styles/addReserve.css';
 function AddReserve() {
   const currentUser = 'user';
   const itemId = null;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   let showSelect;
   let itemContent;
 
   const {
     items, itemsByCity, isLoading, selectedItem, selectedCity, selectedDate, status,
-    itemDetail,
+    itemDetail, isReserved,
   } = useSelector((state) => state.reserves);
 
   // get item city by id
@@ -113,6 +115,12 @@ function AddReserve() {
         <input className="input-group mb-3" type="date" placeholder="Date" aria-label="date" value={selectedDate} onChange={handleSelectedDate} />
       </>
     );
+  }
+
+  // redirect to reservation list if isReserved
+  if (isReserved) {
+    navigate('/reservation_list');
+    dispatch(setIsReserved());
   }
 
   return (
