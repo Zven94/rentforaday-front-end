@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import Splash from './components/Splash';
-import Item from './components/ItemList';
+// import Item from './components/ItemList';
 import ReservationsList from './components/ReservationsList';
 
 const router = createBrowserRouter([
