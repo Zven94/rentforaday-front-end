@@ -1,17 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
 
 import { setToken } from './tokenSlice';
-import { fetchItems } from '../items/itemSlice';
 
 import itemAPI from '../../API/itemAPI';
 
 const initialState = {
-  token: null,
+  id: null,
   user: null,
   isAuthenticated: false,
+  isRegistered: false,
   isLoading: false,
   error: null,
 };
@@ -37,11 +36,7 @@ export const loginUser = createAsyncThunk(
         toast.success(`Successful login. Welcome, ${user.name}`);
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
-        thunkAPI.dispatch(fetchItems());
         thunkAPI.dispatch(setToken(token));
-        setTimeout(() => {
-          Navigate('/items');
-        }, 6000);
       }
       if (response.data.status.success === false) {
         toast.error(`Registration failed. ${response.data.message[0]}`);
@@ -74,9 +69,6 @@ export const registerUser = createAsyncThunk(
       );
       if (response.data.success === true) {
         toast.success('Registration successful. Please login.');
-        setTimeout(() => {
-          Navigate('/login');
-        }, 6000);
       }
       if (response.data.success === false) {
         toast.error(`Registration failed. ${response.data.message[0]}`);
@@ -89,16 +81,51 @@ export const registerUser = createAsyncThunk(
   },
 );
 
+// Async Thunk for user logout
+export const logoutUser = createAsyncThunk(
+  'auth/logoutUser',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `${itemAPI.baseURL}${itemAPI.logout}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          },
+        },
+      );
+      if (response.data.status.success === 200 || response.data.message === 'logged out successfully' || response.data.message === "Couldn't find an active session.") {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        thunkAPI.dispatch(setToken(null));
+        toast.success('Logout successful.');
+      }
+      if (response.data.status.success === 200) {
+        toast.error(`Logout failed. ${response.data.message[0]}`);
+      }
+      return response.data;
+    } catch (error) {
+      toast.error(`Logout failed. ${error.message}`);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    clearRegistration: (state) => {
+      state.isRegistered = false;
+    },
+  },
   extraReducers(builder) {
     // registerUser
     builder.addCase(registerUser.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(registerUser.fulfilled, (state) => {
+      state.isRegistered = true;
       state.isLoading = false;
       state.error = null;
     });
@@ -110,19 +137,35 @@ const authSlice = createSlice({
     builder.addCase(loginUser.pending, (state) => {
       state.isLoading = true;
     });
-    // en un escenario exitoso, guardar el token en el local storage
     builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.id = action.payload.data.id;
       state.isLoading = false;
       state.error = null;
       state.user = action.payload.data.name;
       state.isAuthenticated = true;
     });
-    // en un escenario de error, mostrar el error
     builder.addCase(loginUser.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    // logoutUser
+    builder.addCase(logoutUser.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(logoutUser.fulfilled, (state) => {
+      state.id = null;
+      state.user = null;
+      state.isAuthenticated = false;
+      state.isLoading = false;
+      state.error = null;
+    });
+    builder.addCase(logoutUser.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
   },
 });
+
+export const { clearRegistration } = authSlice.actions;
 
 export default authSlice.reducer;
