@@ -18,10 +18,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <Splash />,
       },
-      {
-        path: 'items',
-        element: <Item />,
-      },
+      // {
+      //   path: 'items',
+      //   element: <Item />,
+      // },
       // {
       //   path: 'registration',
       //   element: <Registration />,
