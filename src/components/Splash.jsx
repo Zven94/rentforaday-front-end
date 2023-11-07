@@ -22,6 +22,7 @@ import '../styles/Splash.css';
 
 const Splash = () => (
   <>
+    <h1 className="slideContent__title">Choose your next destination&apos;s accommodation.</h1>
     <Swiper
       className="splashSwiper"
       direction="vertical"
