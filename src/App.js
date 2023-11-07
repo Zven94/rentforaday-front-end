@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import ReservationsList from './components/ReservationsList';
+import AddItem from './components/AddItem';
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,10 @@ const router = createBrowserRouter([
       //     path: 'delete_item',
       //     element: <DeleteItem />,
       //   },
-      //   {
+      // {
       //   path: 'add_item',
-      //     element: <AddItem />,
-      //   },
+      //   element: <AddItem />,
+      // },
       // {
       //   path: 'add_reserve',
       //   element: <AddReserve />,
@@ -39,7 +40,12 @@ const router = createBrowserRouter([
         element: <ReservationsList />,
       },
     ],
-  }]);
+  },
+  {
+    path: 'add_item',
+    element: <AddItem />,
+  },
+]);
 
 function App() {
   return (
