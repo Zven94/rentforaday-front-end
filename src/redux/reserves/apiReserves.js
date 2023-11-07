@@ -10,8 +10,8 @@ const fetchReserves = createAsyncThunk('reserves/fetchReserves', async () => {
   return response.data;
 });
 
-const deleteReserve = createAsyncThunk('reserves/deleteReserve', async (ids) => {
-  const response = await axios.delete(`${urlReserves}${ids}`);
+const deleteReserve = createAsyncThunk('reserves/deleteReserve', async (reserveId) => {
+  const response = await axios.delete(`${urlReserves}${idUser}/appointments/${reserveId}`);
   return response.data;
 });
 
