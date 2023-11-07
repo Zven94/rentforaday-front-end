@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import itemAPI from '../../API/itemAPI';
+import { Navigate } from 'react-router-dom';
 
 const initialState = {
   token: null,
@@ -64,7 +65,15 @@ export const registerUser = createAsyncThunk(
           },
         },
       );
-      toast.success('Registration successful. Please login.');
+      if (response.data.success === true) {
+        toast.success('Registration successful. Please login.');
+        setTimeout(() => {
+          Navigate('/login');
+        }, 6000);
+      }
+      if (response.data.success === false) {
+        toast.error(`Registration failed. ${response.data.message[0]}`);
+      }
       return response.data;
     } catch (error) {
       toast.error(`Registration failed. ${error.message}`);
