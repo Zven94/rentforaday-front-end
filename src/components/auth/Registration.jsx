@@ -1,0 +1,105 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-hot-toast';
+
+import { registerUser } from '../../redux/users/authSlice';
+
+import '../../styles/Registration.css';
+
+const Registration = () => {
+  const dispatch = useDispatch();
+  const [nameInput, setName] = React.useState('');
+  const [emailInput, setEmail] = React.useState('');
+  const [passwordInput, setPassword] = React.useState('');
+  const [confirm, setConfirm] = React.useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!nameInput || !emailInput || !passwordInput || !confirm) {
+      toast.error('All fields are required');
+    } else if (passwordInput.length < 8) {
+      toast.error('Password must be at least 8 characters long');
+    } else if (passwordInput !== confirm) {
+      toast.error('Passwords do not match');
+    } else if (!emailInput.includes('@') || !emailInput.includes('.com')) {
+      toast.error('The email is invalid');
+    } else if (passwordInput === confirm) {
+      try {
+        const formData = {
+          name: nameInput,
+          email: emailInput,
+          password: passwordInput,
+        };
+        dispatch(
+          registerUser(formData),
+        );
+        setName('');
+        setEmail('');
+        setPassword('');
+        setConfirm('');
+      } catch (error) {
+        toast.error('Error al registrar el usuario');
+      }
+    } else {
+      toast.error('Error desconocido al registrar el usuario');
+    }
+  };
+
+  return (
+    <section className="loginContainer">
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <h1 className="formTitle">User registration</h1>
+        <div className="form-group">
+          <label htmlFor="name">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              placeholder="Enter your name"
+              value={nameInput}
+              onChange={(event) => setName(event.target.value)}
+            />
+          </label>
+          <label htmlFor="email">
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Enter your email address"
+              value={emailInput}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Enter your password"
+              value={passwordInput}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </label>
+          <label htmlFor="confirm">
+            <input
+              type="password"
+              className="form-control"
+              id="confirm"
+              placeholder="Confirm your password"
+              value={confirm}
+              onChange={(event) => setConfirm(event.target.value)}
+            />
+          </label>
+        </div>
+        <small id="passwordHelp" className="form-text text-muted">
+          Password must be at least 8 characters long.
+        </small>
+        <button type="submit" className="btn btn-primary">Register</button>
+      </form>
+    </section>
+  );
+};
+
+export default Registration;
