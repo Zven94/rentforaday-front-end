@@ -8,6 +8,14 @@ aside a {
   }
 }
 
+nav {
+  position: relative;
+}
+
+.offcanvas {
+  max-width: 20rem;
+}
+
 nav a p:hover {
   background-color: var(--green);
   transition: all 0.2s;
@@ -39,6 +47,10 @@ nav a p:active {
 
 .closeMenu:hover img:last-child {
   transform: rotate(-45deg) translate(0.1rem, -0.3rem);
+}
+
+.closeMenu {
+  display:none
 }
 
 .openBtn,
@@ -75,4 +87,33 @@ nav a p:active {
 .social {
   width: 1.5rem;
   margin: 2rem 1rem 1rem 0;
+}
+
+@media (max-width: 900px) {
+  .closeMenu {
+    display: inline;
+  }
+}
+
+@media (max-width: 768px) {
+  .offcanvas {
+    max-width: 15rem;
+  }
+
+  .offcanvas-body {
+    margin-top: 0rem;
+    font-size: 1.3rem;
+  }
+
+  .navFooter {
+    display: inline;
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    
+    & img {
+      width: 1.2rem;
+      margin: 1rem 0.5rem 1rem 0;
+    }
+  }
 }
