@@ -1,7 +1,11 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+// Elements for the router.
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
+import Splash from './components/Splash';
+import Item from './components/ItemList';
 import ReservationsList from './components/ReservationsList';
 
 const router = createBrowserRouter([
@@ -10,10 +14,14 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      // {
-      //   path: 'items',
-      //   element: <Carousel />,
-      // },
+      {
+        path: '/',
+        element: <Splash />,
+      },
+      {
+        path: 'items',
+        element: <Item />,
+      },
       // {
       //   path: 'registration',
       //   element: <Registration />,
@@ -43,9 +51,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <React.StrictMode>
+    <>
       <RouterProvider router={router} />
-    </React.StrictMode>
+    </>
   );
 }
 
