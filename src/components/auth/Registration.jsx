@@ -1,17 +1,31 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-import { registerUser } from '../../redux/users/authSlice';
+import { registerUser, clearRegistration } from '../../redux/users/authSlice';
 
 import '../../styles/Registration.css';
 
 const Registration = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [nameInput, setName] = React.useState('');
   const [emailInput, setEmail] = React.useState('');
   const [passwordInput, setPassword] = React.useState('');
   const [confirm, setConfirm] = React.useState('');
+
+  const { isRegistered } = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    if (isRegistered) {
+      toast.success('User registered successfully');
+      setTimeout(() => {
+        dispatch(clearRegistration());
+        navigate('/login');
+      }, 6000);
+    }
+  }, [dispatch, isRegistered, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
