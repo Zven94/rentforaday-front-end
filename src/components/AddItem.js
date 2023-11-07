@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 export default function AddItem() {
+  const [message, setMessage] = useState('');
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -20,15 +24,14 @@ export default function AddItem() {
 
       if (response.ok) {
         // Manejar la respuesta si la solicitud fue exitosa
-        console.log('Item added successfully!');
+        setMessage('Item added successfully!');
         event.target.reset();
       } else {
         // Manejar errores si la solicitud falla
-        console.error('Failed to add item');
-        console.error(response.body);
+        setMessage('Failed to add item');
       }
     } catch (error) {
-      console.error('Error:', error);
+      setMessage(`Error: ${error.message}`);
     }
   };
 
@@ -73,6 +76,9 @@ export default function AddItem() {
             </div>
           </form>
         </div>
+      </div>
+      <div>
+        {message && <p>{message}</p>}
       </div>
     </main>
   );
