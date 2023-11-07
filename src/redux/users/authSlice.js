@@ -1,8 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import itemAPI from '../../API/itemAPI';
 import { Navigate } from 'react-router-dom';
+
+import { setToken } from './tokenSlice';
+import { fetchItems } from '../items/itemSlice';
+
+import itemAPI from '../../API/itemAPI';
 
 const initialState = {
   token: null,
@@ -26,22 +30,25 @@ export const loginUser = createAsyncThunk(
           },
         },
       );
-      // save the response data
-      const data = await response.data;
-
-      if (response.status === 200) {
+      if (response.data.status.code === 200 && response.data.status.message === 'Logged in sucessfully.') {
         // destructure the response data to get the token and user
         const token = response.headers.authorization;
-        const { user } = data;
-        // save the token and user in localStorage
+        const user = response.data.data;
+        toast.success(`Successful login. Welcome, ${user.name}`);
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
-        // success message to the user
-        toast.success(`Welcome, ${user.name}`);
+        thunkAPI.dispatch(fetchItems());
+        thunkAPI.dispatch(setToken(token));
+        setTimeout(() => {
+          Navigate('/items');
+        }, 6000);
+      }
+      if (response.data.status.success === false) {
+        toast.error(`Registration failed. ${response.data.message[0]}`);
       }
 
       // Return the user data
-      return data;
+      return response.data;
     } catch (error) {
       // Return the error message
       toast.error(`Login failed. ${error.message}`);
@@ -107,8 +114,7 @@ const authSlice = createSlice({
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.token = action.payload.token;
-      state.user = action.payload.user;
+      state.user = action.payload.data.name;
       state.isAuthenticated = true;
     });
     // en un escenario de error, mostrar el error
@@ -118,12 +124,5 @@ const authSlice = createSlice({
     });
   },
 });
-
-// export const {
-//   authLoading,
-//   authSuccess,
-//   authFail,
-//   logout,
-// } = authSlice.actions;
 
 export default authSlice.reducer;
