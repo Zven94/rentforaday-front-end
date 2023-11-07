@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './AddItem.css';
 
 export default function AddItem() {
   const [message, setMessage] = useState('');
@@ -36,8 +37,8 @@ export default function AddItem() {
   };
 
   return (
-    <main className="d-flex flex-column justify-content-center align-items-center h-100">
-      <div className="d-flex flex-column justify-content-center align-items-center h-50 border border-secondary-subtle rounded">
+    <main className="d-flex flex-column justify-content-center align-items-center h-100 main-background">
+      <div className="d-flex flex-column justify-content-center align-items-center h-50  rounded div-form">
         <h1>New Item</h1>
         <div className="p-3">
           <form action="/api/v1/items" method="post" onSubmit={handleSubmit}>
