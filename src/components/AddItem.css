@@ -10,3 +10,7 @@
   z-index: 10;
   box-shadow: 0 0 15px 20px rgba(0, 0, 0, 0.5);
 }
+
+.sidebar {
+  background-color: transparent;
+}

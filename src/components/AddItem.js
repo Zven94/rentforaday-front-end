@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './AddItem.css';
+import Sidebar from './SideBar';
 
 export default function AddItem() {
   const [message, setMessage] = useState('');
@@ -37,50 +38,53 @@ export default function AddItem() {
   };
 
   return (
-    <main className="d-flex flex-column justify-content-center align-items-center h-100 main-background">
-      <div className="d-flex flex-column justify-content-center align-items-center h-50  rounded div-form">
-        <h1>New Item</h1>
-        <div className="p-3">
-          <form action="/api/v1/items" method="post" onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="name" className="form-label">
-                Name
-                <input type="text" id="name" name="name" className="form-control" />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="city" className="form-label">
-                City
-                <input type="text" id="city" name="city" className="form-control" />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="description" className="form-label">
-                Description
-                <input type="text" id="description" name="description" className="form-control" />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="price" className="form-label">
-                Price
-                <input type="text" id="price" name="price" className="form-control" />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="image" className="form-label">
-                Image
-                <input type="file" id="image" name="image" className="form-control" />
-              </label>
-            </div>
-            <div>
-              <button type="submit" className="btn btn-primary">Add Item</button>
-            </div>
-          </form>
+    <body className=" main-background">
+      <Sidebar className="sidebar" />
+      <main className="d-flex flex-column justify-content-center align-items-center h-100">
+        <div className="d-flex flex-column justify-content-center align-items-center h-50  rounded div-form">
+          <h1>New Item</h1>
+          <div className="p-3">
+            <form action="/api/v1/items" method="post" onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="name" className="form-label">
+                  Name
+                  <input type="text" id="name" name="name" className="form-control" />
+                </label>
+              </div>
+              <div>
+                <label htmlFor="city" className="form-label">
+                  City
+                  <input type="text" id="city" name="city" className="form-control" />
+                </label>
+              </div>
+              <div>
+                <label htmlFor="description" className="form-label">
+                  Description
+                  <input type="text" id="description" name="description" className="form-control" />
+                </label>
+              </div>
+              <div>
+                <label htmlFor="price" className="form-label">
+                  Price
+                  <input type="text" id="price" name="price" className="form-control" />
+                </label>
+              </div>
+              <div>
+                <label htmlFor="image" className="form-label">
+                  Image
+                  <input type="file" id="image" name="image" className="form-control" />
+                </label>
+              </div>
+              <div>
+                <button type="submit" className="btn btn-primary">Add Item</button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-      <div>
-        {message && <p>{message}</p>}
-      </div>
-    </main>
+        <div>
+          {message && <p>{message}</p>}
+        </div>
+      </main>
+    </body>
   );
 }
