@@ -31,8 +31,17 @@ html {
   /* outline: 1px solid red !important; */
 }
 
-h1 {
+h1,
+.formTitle {
   font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.formTitle {
+  width: 100%;
+  color: white;
+  text-align: center;
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.33);
+  border-bottom: 2px solid white;
 }
 
 @media (max-width: 768px) {
