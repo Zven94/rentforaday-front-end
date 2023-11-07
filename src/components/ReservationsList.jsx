@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { fetchReserves} from '../redux/reserves/apiReserves';
+import { fetchReserves, deleteReserve } from '../redux/reserves/apiReserves';
 import { setIsDeleting } from '../redux/reserves/reserveSlice';
 import icons from '../assets/icons';
 import '../styles/reservationList.css';
@@ -20,6 +20,11 @@ function ReservationsList() {
     dispatch(fetchReserves());
     dispatch(setIsDeleting());
   }, [dispatch, isDeleting]);
+
+  const handleClick = (reserveId) => {
+    dispatch(deleteReserve(reserveId));
+    dispatch(fetchReserves());
+  };
 
   if (isLoading) {
     reserveContent = (
@@ -73,6 +78,9 @@ function ReservationsList() {
                   </div>
                   <p className="dots">...........</p>
                   <p className="reserveDescription">{reserve.item.description}</p>
+                  <button type="button" className="btn" onClick={() => handleClick(reserve.id)} disabled={isDeleting}>
+                    {`Delete ${reserve.id}`}
+                  </button>
                 </li>
               </SwiperSlide>
             ))}
@@ -93,7 +101,7 @@ function ReservationsList() {
         <h1>My Reservations</h1>
         <p>............</p>
       </div>
-
+      {reserveContent}
     </>
   );
 }
