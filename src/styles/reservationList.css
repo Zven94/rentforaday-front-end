@@ -59,3 +59,28 @@
   }
 
 }
+
+@media (max-width: 890px) {
+  .reserves {
+    width: 100%;
+    margin-left: 0rem;
+    & img {
+      width: 75%;
+    }
+
+    & .custom-next-button, .custom-prev-button {
+      max-width: 4rem;
+      max-height: 3rem;
+    }
+  }
+
+  .myTitle {
+    top: 0.5rem;
+    width: 100%;
+    & p {
+      color: var(--mid-grey);
+      font-size: 2rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+} 
