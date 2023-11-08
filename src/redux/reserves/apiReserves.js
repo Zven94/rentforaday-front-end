@@ -1,11 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const idUser = '1';
+let idUser = '0';
+
+console.log(idUser);
 
 const urlReserves = 'http://127.0.0.1:4000/api/v1/users/';
 
 const fetchReserves = createAsyncThunk('reserves/fetchReserves', async () => {
+  if (localStorage.getItem('user') !== null) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user.id !== undefined) {
+      idUser = user.id;
+    }
+  }
   const response = await axios.get(`${urlReserves}${idUser}/appointments`);
   return response.data;
 });
@@ -31,6 +39,12 @@ const postReserve = createAsyncThunk('reserves/postReserve', async (dataObject, 
 });
 
 const fetchItems = createAsyncThunk('items/fetchItems', async () => {
+  if (localStorage.getItem('user') !== null) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user.id !== undefined) {
+      idUser = user.id;
+    }
+  }
   const response = await axios.get('http://127.0.0.1:4000/api/v1/items');
   return response.data;
 });
