@@ -9,6 +9,7 @@ const itemAPI = {
   registration: 'api/v1/users',
   allUsers: 'api/v1/users',
   listItems: 'api/v1/items',
+  deleteItems: 'api/v1/items',
 };
 
 export default itemAPI;

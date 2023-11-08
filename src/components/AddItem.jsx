@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import itemAPI from '../API/itemAPI';
 import '../styles/AddItem.css';
 
 export default function AddItem() {
@@ -17,7 +18,7 @@ export default function AddItem() {
     formData.append('item[image]', form.image.files[0]);
 
     try {
-      const response = await fetch('http://localhost:3000/api/v1/items', {
+      const response = await fetch(`${itemAPI.baseURL}${itemAPI.listItems}`, {
         method: 'POST',
         headers: {},
         body: formData,
@@ -42,7 +43,7 @@ export default function AddItem() {
         <div className="div-form d-flex flex-column justify-content-center align-items-center gap-2">
           <h1 className="formTitle">New Item</h1>
           <div className="d-flex p-3">
-            <form action="/api/v1/items" method="post" onSubmit={handleSubmit} className="div-form d-flex flex-column justify-content-center align-items-center gap-1">
+            <form action={itemAPI.listItems} method="post" onSubmit={handleSubmit} className="div-form d-flex flex-column justify-content-center align-items-center gap-1">
               <div>
                 <label htmlFor="name" className="form-label" aria-label="Name">
                   <input type="text" id="name" name="name" placeholder="Name" className="form-control" />
