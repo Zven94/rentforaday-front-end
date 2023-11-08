@@ -2,8 +2,18 @@
   transform: rotate(180deg);
 }
 
+.custom-next-button,
+.custom-prev-button {
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .myTitle {
   top: 3rem;
+
   & p {
     color: var(--mid-grey);
     font-size: 2rem;
@@ -14,6 +24,7 @@
 .reserves {
   width: 80%;
   margin-left: 20rem;
+
   & li {
     width: 80%;
     min-width: 10rem;
@@ -40,7 +51,7 @@
       width: 70%;
       margin: 1rem;
     }
-    
+
     & button {
       background: var(--green);
       color: var(--light-grey);
@@ -51,24 +62,38 @@
     }
   }
 
-  & .custom-next-button, .custom-prev-button {
+  & .custom-next-button,
+  .custom-prev-button {
     color: #fff;
     cursor: pointer;
     max-width: 8rem;
     max-height: 4rem;
   }
+}
 
+& .back {
+  bottom: 4rem;
+  left: 18rem;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.7;
+
+  &:hover {
+    transform: scaleX(1.2);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 890px) {
   .reserves {
     width: 100%;
-    margin-left: 0rem;
+    margin-left: 0;
+
     & img {
       width: 75%;
     }
 
-    & .custom-next-button, .custom-prev-button {
+    & .custom-next-button,
+    .custom-prev-button {
       max-width: 4rem;
       max-height: 3rem;
     }
@@ -77,10 +102,17 @@
   .myTitle {
     top: 0.5rem;
     width: 100%;
+
     & p {
       color: var(--mid-grey);
       font-size: 2rem;
       letter-spacing: 0.5rem;
     }
   }
-} 
+
+  & .back {
+    bottom: 0;
+    left: -2rem;
+    width: 30%;
+  }
+}

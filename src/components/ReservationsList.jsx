@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { fetchReserves, deleteReserve } from '../redux/reserves/apiReserves';
 import { setIsDeleting } from '../redux/reserves/reserveSlice';
+import { setLocalStorage } from '../redux/users/authSlice';
 import icons from '../assets/icons';
 import '../styles/reservationList.css';
 import Spinner from './Spinner';
@@ -11,9 +13,10 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 function ReservationsList() {
-  const currentUser = 'cesar';
   const dispatch = useDispatch();
   const { reserves, isDeleting, isLoading } = useSelector((state) => state.reserves);
+  const { userStorage } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   let reserveContent;
 
   useEffect(() => {
@@ -26,14 +29,22 @@ function ReservationsList() {
     dispatch(fetchReserves());
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  if (localStorage.getItem('user') !== null) {
+    dispatch(setLocalStorage(localStorage.getItem('user')));
+  }
+
   if (isLoading) {
     reserveContent = (
       <div className="container text-center d-flex justify-content-center align-items-center min-vh-100">
         <Spinner />
       </div>
     );
-  } else if (reserves.length > 0) {
-    if (currentUser.length > 0) {
+  } else if (userStorage !== null) {
+    if (reserves.length > 0) {
       reserveContent = (
         <section className="reserves d-flex align-items-center min-vh-100">
           <img className="custom-prev-button" src={icons.ButtonGreen} alt="left" />
@@ -89,10 +100,10 @@ function ReservationsList() {
         </section>
       );
     } else {
-      reserveContent = (<h1 className="container text-center">Sign in!! 👈</h1>);
+      reserveContent = (<h1 className="container text-center">No Reserves yet</h1>);
     }
   } else {
-    reserveContent = (<h1 className="container text-center">No Reserves yet</h1>);
+    reserveContent = (<h1 className="container text-center">Sign in!! 👈</h1>);
   }
 
   return (
@@ -102,6 +113,7 @@ function ReservationsList() {
         <p>............</p>
       </div>
       {reserveContent}
+      <button type="button" className="btn position-absolute back" onClick={() => handleBack()}><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
     </>
   );
 }

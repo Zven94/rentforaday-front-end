@@ -13,6 +13,8 @@ const initialState = {
   isRegistered: false,
   isLoading: false,
   error: null,
+  userStorage: null,
+  idStorage: null,
 };
 
 // Async thunk for user login
@@ -118,6 +120,10 @@ const authSlice = createSlice({
     clearRegistration: (state) => {
       state.isRegistered = false;
     },
+    setLocalStorage: (state, action) => {
+      state.userStorage = JSON.parse(action.payload).name;
+      state.idStorage = JSON.parse(action.payload).id;
+    },
   },
   extraReducers(builder) {
     // registerUser
@@ -158,6 +164,8 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.isLoading = false;
       state.error = null;
+      state.userStorage = null;
+      state.idStorage = null;
     });
     builder.addCase(logoutUser.rejected, (state, action) => {
       state.isLoading = false;
@@ -166,6 +174,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { clearRegistration } = authSlice.actions;
+export const { clearRegistration, setLocalStorage } = authSlice.actions;
 
 export default authSlice.reducer;
