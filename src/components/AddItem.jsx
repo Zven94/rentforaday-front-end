@@ -74,7 +74,7 @@ export default function AddItem() {
             </form>
           </div>
         </div>
-        <div>
+        <div className="div-message">
           {message && <p>{message}</p>}
         </div>
       </div>

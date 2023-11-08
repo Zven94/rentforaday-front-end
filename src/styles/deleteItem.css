@@ -1,4 +1,4 @@
-.addItemCotent {
+.deleteItemContent {
   width: 100%;
   height: 100%;
   margin-left: auto;
@@ -11,10 +11,11 @@
   background: url('/src/assets/background-add.png') center center no-repeat;
   background-size: cover;
   background-repeat: no-repeat;
+  color: #fff;
 }
 
-.div-form {
-  max-width: 35rem;
+.div-list {
+  max-width: 50rem;
   border-radius: 1rem;
   background-color: rgba(0, 0, 0, 0);
   backdrop-filter: blur(10px);
@@ -22,19 +23,22 @@
   animation: appear 0.2s ease-in-out 0.1s forwards;
 }
 
-form div,
-form div label {
-  width: 100%;
+span {
+  width: 75%;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  background-color: #fff;
+  color: rgba(152, 194, 16, 0.897);
+  border: 2px solid var(--green);
+  border-radius: 2rem;
+
+  /* background-color: rgba(153, 194, 16, 0.3); */
 }
 
-label.form-label {
-  color: white;
-}
-
-.div-form button {
+button {
   border: 2px solid var(--green);
   background-color: rgba(153, 194, 16, 0.3);
-  margin-top: 0.8rem;
+  color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   transition: all 0.3s ease-in-out;
@@ -42,7 +46,7 @@ label.form-label {
   filter: drop-shadow(-0.1rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1));
 }
 
-.div-form button:hover {
+button:hover {
   transform: scale(1.1);
   border: 2px solid var(--green-hover);
   background-color: var(--green-hover);
@@ -50,9 +54,6 @@ label.form-label {
 }
 
 .div-message {
-  position: absolute;
-  top: 44rem;
-  color: #fff;
   font-size: 1.15rem;
   font-weight: 400;
 }
