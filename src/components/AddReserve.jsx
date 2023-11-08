@@ -134,7 +134,7 @@ function AddReserve() {
 
               <button className="btn " type="button" onClick={() => handleSubmit()}>Reserve Now</button>
             </form>
-            <div className="itemContent container-sm text-center">
+            <div className="item text-center">
               {itemContent}
             </div>
           </section>

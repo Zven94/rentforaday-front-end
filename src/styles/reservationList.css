@@ -1,0 +1,86 @@
+.custom-next-button {
+  transform: rotate(180deg);
+}
+
+.myTitle {
+  top: 3rem;
+  & p {
+    color: var(--mid-grey);
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
+}
+
+.reserves {
+  width: 80%;
+  margin-left: 20rem;
+  & li {
+    width: 80%;
+    min-width: 10rem;
+    text-align: center;
+
+    & .dots {
+      color: var(--mid-grey);
+      font-size: 1.8rem;
+      letter-spacing: 0.3rem;
+    }
+
+    & .reserveCity {
+      text-align: center;
+      width: 15rem;
+    }
+
+    & .reserveDescription {
+      color: var(--mid-grey);
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    & img {
+      width: 70%;
+      margin: 1rem;
+    }
+    
+    & button {
+      background: var(--green);
+      color: var(--light-grey);
+    }
+
+    & button:hover {
+      background: var(--green-hover);
+    }
+  }
+
+  & .custom-next-button, .custom-prev-button {
+    color: #fff;
+    cursor: pointer;
+    max-width: 8rem;
+    max-height: 4rem;
+  }
+
+}
+
+@media (max-width: 890px) {
+  .reserves {
+    width: 100%;
+    margin-left: 0rem;
+    & img {
+      width: 75%;
+    }
+
+    & .custom-next-button, .custom-prev-button {
+      max-width: 4rem;
+      max-height: 3rem;
+    }
+  }
+
+  .myTitle {
+    top: 0.5rem;
+    width: 100%;
+    & p {
+      color: var(--mid-grey);
+      font-size: 2rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+} 
