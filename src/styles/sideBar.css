@@ -1,4 +1,4 @@
-nav a {
+aside a {
   text-decoration: none;
   color: var(--dark);
   font-weight: bolder;
@@ -24,8 +24,7 @@ nav a p:active {
   text-align: center;
 }
 
-.openBtn img,
-.closeMenu img {
+.reservation_list .closeMenu img {
   transition: all 0.4s;
   width: 1.5rem;
 }
@@ -44,6 +43,8 @@ nav a p:active {
 
 .openBtn,
 .closeMenu {
+  position: fixed;
+  z-index: 10;
   transition: all 0.4s;
   background: none;
   border: none;
