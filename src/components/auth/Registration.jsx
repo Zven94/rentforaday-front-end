@@ -52,10 +52,10 @@ const Registration = () => {
         setPassword('');
         setConfirm('');
       } catch (error) {
-        toast.error('Error al registrar el usuario');
+        toast.error('Error when registering the user.');
       }
     } else {
-      toast.error('Error desconocido al registrar el usuario');
+      toast.error('Unknown error when registering the user.');
     }
   };
 
@@ -64,7 +64,7 @@ const Registration = () => {
       <form className="loginForm" onSubmit={handleSubmit}>
         <h1 className="formTitle">User registration</h1>
         <div className="form-group">
-          <label htmlFor="name">
+          <label htmlFor="name" aria-label="Name">
             <input
               type="text"
               className="form-control"
@@ -74,7 +74,7 @@ const Registration = () => {
               onChange={(event) => setName(event.target.value)}
             />
           </label>
-          <label htmlFor="email">
+          <label htmlFor="email" aria-label="Email">
             <input
               type="email"
               className="form-control"
@@ -86,7 +86,7 @@ const Registration = () => {
           </label>
         </div>
         <div className="form-group">
-          <label htmlFor="password">
+          <label htmlFor="password" aria-label="Password">
             <input
               type="password"
               className="form-control"
@@ -96,7 +96,7 @@ const Registration = () => {
               onChange={(event) => setPassword(event.target.value)}
             />
           </label>
-          <label htmlFor="confirm">
+          <label htmlFor="confirm" aria-label="ConfirmPassword">
             <input
               type="password"
               className="form-control"

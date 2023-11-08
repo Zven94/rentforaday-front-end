@@ -43,10 +43,10 @@ const Login = () => {
         setEmail('');
         setPassword('');
       } catch (error) {
-        toast.error('Error al registrar el usuario');
+        toast.error('Error when registering the user.');
       }
     } else {
-      toast.error('Error desconocido al registrar el usuario');
+      toast.error('Unknown error when registering the user.');
     }
   };
 
@@ -55,7 +55,7 @@ const Login = () => {
       <form className="loginForm" onSubmit={handleSubmit}>
         <h1 className="formTitle">User login</h1>
         <div className="form-group">
-          <label htmlFor="email">
+          <label htmlFor="email" aria-label="Email">
             <input
               type="email"
               className="form-control"
@@ -67,7 +67,7 @@ const Login = () => {
           </label>
         </div>
         <div className="form-group">
-          <label htmlFor="password">
+          <label htmlFor="password" aria-label="Password">
             <input
               type="password"
               className="form-control"
