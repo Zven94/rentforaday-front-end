@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import './AddItem.css';
-import Sidebar from './SideBar';
+import '../styles/AddItem.css';
 
 export default function AddItem() {
   const [message, setMessage] = useState('');
@@ -38,35 +37,30 @@ export default function AddItem() {
   };
 
   return (
-    <body className=" main-background">
-      <Sidebar className="sidebar" />
-      <main className="d-flex flex-column justify-content-center align-items-center h-100">
-        <div className="d-flex flex-column justify-content-center align-items-center h-50  rounded div-form">
-          <h1>New Item</h1>
-          <div className="p-3">
-            <form action="/api/v1/items" method="post" onSubmit={handleSubmit}>
+    <>
+      <div className="addItemCotent d-flex flex-column justify-content-center align-items-center">
+        <div className="div-form d-flex flex-column justify-content-center align-items-center gap-2">
+          <h1 className="formTitle">New Item</h1>
+          <div className="d-flex p-3">
+            <form action="/api/v1/items" method="post" onSubmit={handleSubmit} className="div-form d-flex flex-column justify-content-center align-items-center gap-1">
               <div>
-                <label htmlFor="name" className="form-label">
-                  Name
-                  <input type="text" id="name" name="name" className="form-control" />
+                <label htmlFor="name" className="form-label" aria-label="Name">
+                  <input type="text" id="name" name="name" placeholder="Name" className="form-control" />
                 </label>
               </div>
               <div>
-                <label htmlFor="city" className="form-label">
-                  City
-                  <input type="text" id="city" name="city" className="form-control" />
+                <label htmlFor="city" className="form-label" aria-label="City">
+                  <input type="text" id="city" name="city" placeholder="City" className="form-control" />
                 </label>
               </div>
               <div>
-                <label htmlFor="description" className="form-label">
-                  Description
-                  <input type="text" id="description" name="description" className="form-control" />
+                <label htmlFor="description" className="form-label" aria-label="Description">
+                  <input type="text" id="description" name="description" placeholder="Description" className="form-control" />
                 </label>
               </div>
               <div>
-                <label htmlFor="price" className="form-label">
-                  Price
-                  <input type="text" id="price" name="price" className="form-control" />
+                <label htmlFor="price" className="form-label" aria-label="Price">
+                  <input type="text" id="price" name="price" placeholder="Price" className="form-control" />
                 </label>
               </div>
               <div>
@@ -75,16 +69,14 @@ export default function AddItem() {
                   <input type="file" id="image" name="image" className="form-control" />
                 </label>
               </div>
-              <div>
-                <button type="submit" className="btn btn-primary">Add Item</button>
-              </div>
+              <button type="submit" className="btn btn-primary">Add Item</button>
             </form>
           </div>
         </div>
         <div>
           {message && <p>{message}</p>}
         </div>
-      </main>
-    </body>
+      </div>
+    </>
   );
 }

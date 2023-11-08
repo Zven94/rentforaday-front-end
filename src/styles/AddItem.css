@@ -1,0 +1,50 @@
+.addItemCotent {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: -1;
+  background: url('/src/assets/background-add.png') center center no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.div-form {
+  max-width: 35rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  animation: appear 0.2s ease-in-out 0.1s forwards;
+}
+
+form div,
+form div label {
+  width: 100%;
+}
+
+label.form-label {
+  color: white;
+}
+
+.div-form button {
+  border: 2px solid var(--green);
+  background-color: rgba(153, 194, 16, 0.3);
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(-0.1rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1));
+}
+
+.div-form button:hover {
+  transform: scale(1.1);
+  border: 2px solid var(--green-hover);
+  background-color: var(--green-hover);
+  animation: fadeInTop 0.2s ease-in-out 0.7s forwards;
+}

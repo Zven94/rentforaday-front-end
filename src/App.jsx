@@ -1,9 +1,14 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+// Elements for the router.
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
+import Splash from './components/Splash';
+// import Item from './components/ItemList';
 import ReservationsList from './components/ReservationsList';
 import AddItem from './components/AddItem';
+import AddReserve from './components/AddReserve';
 
 const router = createBrowserRouter([
   {
@@ -11,9 +16,13 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: '/',
+        element: <Splash />,
+      },
       // {
       //   path: 'items',
-      //   element: <Carousel />,
+      //   element: <Item />,
       // },
       // {
       //   path: 'registration',
@@ -27,31 +36,27 @@ const router = createBrowserRouter([
       //     path: 'delete_item',
       //     element: <DeleteItem />,
       //   },
-      // {
-      //   path: 'add_item',
-      //   element: <AddItem />,
-      // },
-      // {
-      //   path: 'add_reserve',
-      //   element: <AddReserve />,
-      // },
+      {
+        path: 'add_item',
+        element: <AddItem />,
+      },
+      {
+        path: 'add_reserve',
+        element: <AddReserve />,
+      },
       {
         path: 'reservation_list',
         element: <ReservationsList />,
       },
     ],
   },
-  {
-    path: 'add_item',
-    element: <AddItem />,
-  },
 ]);
 
 function App() {
   return (
-    <React.StrictMode>
+    <>
       <RouterProvider router={router} />
-    </React.StrictMode>
+    </>
   );
 }
 
