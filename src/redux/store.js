@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import reservesReducer from './reserves/reserveSlice';
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    reserves: reservesReducer,
+  },
 });
 
 export default store;

@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import ReservationsList from './components/ReservationsList';
+import AddReserve from './components/AddReserve';
 
 const router = createBrowserRouter([
   {
@@ -26,14 +27,14 @@ const router = createBrowserRouter([
       //     path: 'delete_item',
       //     element: <DeleteItem />,
       //   },
-      //   {
-      //   path: 'add_item',
-      //     element: <AddItem />,
-      //   },
       // {
-      //   path: 'add_reserve',
-      //   element: <AddReserve />,
+      //   path: 'add_item',
+      //   element: <AddItem />,
       // },
+      {
+        path: 'add_reserve',
+        element: <AddReserve />,
+      },
       {
         path: 'reservation_list',
         element: <ReservationsList />,
