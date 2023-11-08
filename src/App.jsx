@@ -7,6 +7,7 @@ import ErrorPage from './routes/error-page';
 import Splash from './components/Splash';
 // import Item from './components/ItemList';
 import ReservationsList from './components/ReservationsList';
+import AddItem from './components/AddItem';
 import AddReserve from './components/AddReserve';
 
 const router = createBrowserRouter([
@@ -35,10 +36,10 @@ const router = createBrowserRouter([
       //     path: 'delete_item',
       //     element: <DeleteItem />,
       //   },
-      // {
-      //   path: 'add_item',
-      //   element: <AddItem />,
-      // },
+      {
+        path: 'add_item',
+        element: <AddItem />,
+      },
       {
         path: 'add_reserve',
         element: <AddReserve />,
@@ -48,7 +49,8 @@ const router = createBrowserRouter([
         element: <ReservationsList />,
       },
     ],
-  }]);
+  },
+]);
 
 function App() {
   return (
