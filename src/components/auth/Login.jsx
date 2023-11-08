@@ -19,7 +19,7 @@ const Login = () => {
     if (isAuthenticated) {
       setTimeout(() => {
         navigate('/items');
-      }, 6000);
+      }, 2000);
     }
   }, [isAuthenticated, navigate]);
 

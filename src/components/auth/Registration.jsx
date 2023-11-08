@@ -23,7 +23,7 @@ const Registration = () => {
       setTimeout(() => {
         dispatch(clearRegistration());
         navigate('/login');
-      }, 6000);
+      }, 2000);
     }
   }, [dispatch, isRegistered, navigate]);
 
