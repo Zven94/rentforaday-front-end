@@ -1,9 +1,19 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
+import { logoutUser } from '../redux/users/authSlice';
+
 import socialMediaIcons from '../assets/icons';
 import '../styles/sideBar.css';
 
 function Sidebar() {
-  const currentUser = 'user';
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
 
   return (
     <aside>
@@ -28,7 +38,7 @@ function Sidebar() {
               <p className="fs-3">Logo</p>
             </NavLink>
           </div>
-          {currentUser.length > 0
+          {user !== null
             ? (
               <div className="offcanvas-body">
 
@@ -36,13 +46,22 @@ function Sidebar() {
                 <NavLink to="add_item"><p>Add item</p></NavLink>
                 <NavLink to="add_reserve"><p>Add Reserve</p></NavLink>
                 <NavLink to="reservation_list"><p>My reservations</p></NavLink>
-                <NavLink to=""><p>Log out</p></NavLink>
+                <NavLink
+                  to=""
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                >
+                  <p>Log out</p>
+                </NavLink>
               </div>
             )
             : (
               <div className="offcanvas-body">
                 <NavLink to="registration"><p>Sign up</p></NavLink>
-                <NavLink to="login"><p>Log in</p></NavLink>
+                <NavLink to="login">
+                  <p>Log in</p>
+                </NavLink>
               </div>
             )}
           <div className="navFooter">

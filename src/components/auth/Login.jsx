@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
@@ -12,6 +12,16 @@ const Login = () => {
   const navigate = useNavigate();
   const [emailInput, setEmail] = React.useState('');
   const [passwordInput, setPassword] = React.useState('');
+
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      setTimeout(() => {
+        navigate('/items');
+      }, 6000);
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,10 +42,6 @@ const Login = () => {
         );
         setEmail('');
         setPassword('');
-
-        setTimeout(() => {
-          navigate('/items');
-        }, 6000);
       } catch (error) {
         toast.error('Error al registrar el usuario');
       }

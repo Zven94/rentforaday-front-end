@@ -10,6 +10,8 @@ const store = configureStore({
     auth: authReducer,
     reserves: reservesReducer,
     token: tokenReducer,
+    token: tokenReducer,
+    reserves: reservesReducer,
   },
 });
 
