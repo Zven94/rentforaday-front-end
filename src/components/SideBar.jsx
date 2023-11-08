@@ -2,18 +2,22 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { logoutUser } from '../redux/users/authSlice';
+import { logoutUser, setLocalStorage } from '../redux/users/authSlice';
 
 import socialMediaIcons from '../assets/icons';
 import '../styles/sideBar.css';
 
 function Sidebar() {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { userStorage } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logoutUser());
   };
+
+  if (localStorage.getItem('user') !== null) {
+    dispatch(setLocalStorage(localStorage.getItem('user')));
+  }
 
   return (
     <aside>
@@ -38,7 +42,7 @@ function Sidebar() {
               <p className="fs-3">Logo</p>
             </NavLink>
           </div>
-          {user !== null
+          {userStorage !== null
             ? (
               <div className="offcanvas-body">
 

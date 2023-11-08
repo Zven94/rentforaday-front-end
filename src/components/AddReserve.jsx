@@ -6,11 +6,11 @@ import { fetchItems, postReserve } from '../redux/reserves/apiReserves';
 import {
   setSelectedItem, setSelectedCity, setSelectedDate, setItemDetail, setIsReserved, setStatus,
 } from '../redux/reserves/reserveSlice';
+import { setLocalStorage } from '../redux/users/authSlice';
 import '../styles/addReserve.css';
 
 function AddReserve() {
-  const currentUser = 'user';
-  const itemId = null;
+  const { userStorage } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let showSelect;
@@ -18,7 +18,7 @@ function AddReserve() {
 
   const {
     items, itemsByCity, isLoading, selectedItem, selectedCity, selectedDate, status,
-    itemDetail, isReserved,
+    itemDetail, isReserved, itemId,
   } = useSelector((state) => state.reserves);
 
   // get item city by id
@@ -56,6 +56,11 @@ function AddReserve() {
     dispatch(fetchItems());
     dispatch(setItemDetail(selectedItem));
   }, [dispatch, selectedItem]);
+
+  // check if user is logged in
+  if (localStorage.getItem('user') !== null) {
+    dispatch(setLocalStorage(localStorage.getItem('user')));
+  }
 
   // show item detail if itemDetail is true,and if status and isLoading are false
   if (status) {
@@ -125,7 +130,7 @@ function AddReserve() {
 
   return (
     <>
-      {currentUser.length > 0
+      {userStorage !== null
         ? (
           <section className="addReserve">
             <h1>Add a Reserve</h1>
