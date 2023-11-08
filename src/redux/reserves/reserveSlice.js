@@ -16,6 +16,7 @@ const initialState = {
   isDeleting: false,
   error: undefined,
   status: undefined,
+  itemId: null,
 };
 
 const reserveSlice = createSlice({
@@ -43,6 +44,9 @@ const reserveSlice = createSlice({
     },
     setIsDeleting(state) {
       state.isDeleting = false;
+    },
+    setItemId(state, action) {
+      state.itemId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -116,6 +120,6 @@ const reserveSlice = createSlice({
 
 export const {
   setSelectedItem, setSelectedCity, setSelectedDate, setItemDetail,
-  setIsReserved, setStatus, setIsDeleting,
+  setIsReserved, setStatus, setIsDeleting, setItemId,
 } = reserveSlice.actions;
 export default reserveSlice.reducer;
