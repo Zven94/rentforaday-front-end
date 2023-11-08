@@ -50,7 +50,7 @@ nav a p:active {
 }
 
 .closeMenu {
-  display:none
+  display: none;
 }
 
 .openBtn,
@@ -101,7 +101,7 @@ nav a p:active {
   }
 
   .offcanvas-body {
-    margin-top: 0rem;
+    margin-top: 0;
     font-size: 1.3rem;
   }
 
@@ -110,7 +110,7 @@ nav a p:active {
     position: absolute;
     bottom: 0;
     left: 2rem;
-    
+
     & img {
       width: 1.2rem;
       margin: 1rem 0.5rem 1rem 0;

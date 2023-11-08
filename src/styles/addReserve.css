@@ -1,12 +1,11 @@
 .addReserve {
   margin-left: 20rem;
-  position: inline;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  width:100%;
+  width: 100%;
   background-image: url(../assets/city.jpg);
   background-size: cover;
   z-index: 0;
@@ -107,7 +106,7 @@
     &::before {
       height: 140vh;
     }
-    
+
     & h1 {
       font-size: 2rem;
     }

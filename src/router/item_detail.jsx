@@ -1,11 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { setItemId } from '../redux/items/itemsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { setItemId } from '../redux/reserves/reserveSlice';
 import './item_detail.css';
 
 export default function ItemDetail() {
   const { itemId } = useParams();
   const numericItemId = parseInt(itemId, 10);
+  const dispatch = useDispatch();
 
   const item = useSelector((state) => state.items.items.find((item) => item.id === numericItemId));
 
