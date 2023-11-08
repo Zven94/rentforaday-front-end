@@ -2,6 +2,13 @@
   transform: rotate(180deg);
 }
 
+.custom-next-button, .custom-prev-button {
+  transition: 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .myTitle {
   top: 3rem;
   & p {
@@ -38,9 +45,9 @@
 
     & img {
       width: 70%;
-      margin: 1rem;
+      margin: 1rem;      
     }
-    
+
     & button {
       background: var(--green);
       color: var(--light-grey);
@@ -58,6 +65,17 @@
     max-height: 4rem;
   }
 
+}
+
+& .back {
+  bottom: 4rem;
+  left: 18rem;
+  transition: all 0.2s ease-in-out;
+  opacity: 0.7;
+  &:hover {
+    transform: scaleX(1.2);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 890px) {
@@ -83,4 +101,10 @@
       letter-spacing: 0.5rem;
     }
   }
+
+  & .back {
+    bottom: 0rem;
+    left: -2rem;
+    width: 30%;
+  } 
 } 

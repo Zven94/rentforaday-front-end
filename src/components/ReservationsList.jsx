@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { fetchReserves, deleteReserve } from '../redux/reserves/apiReserves';
@@ -15,6 +16,7 @@ function ReservationsList() {
   const dispatch = useDispatch();
   const { reserves, isDeleting, isLoading } = useSelector((state) => state.reserves);
   const { userStorage } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   let reserveContent;
 
   useEffect(() => {
@@ -25,6 +27,10 @@ function ReservationsList() {
   const handleClick = (reserveId) => {
     dispatch(deleteReserve(reserveId));
     dispatch(fetchReserves());
+  };
+
+  const handleBack = () => {
+    navigate(-1);
   };
 
   if (localStorage.getItem('user') !== null) {
@@ -107,6 +113,7 @@ function ReservationsList() {
         <p>............</p>
       </div>
       {reserveContent}
+      <button type="button" className="btn position-absolute back" onClick={() => handleBack()}><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
     </>
   );
 }
