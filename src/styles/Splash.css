@@ -1,8 +1,4 @@
-.splashSwiper {
-  animation: appear 0.5s ease-in-out forwards;
-}
-
-.swiper {
+.splashPage {
   width: 100%;
   height: 100%;
   margin-left: auto;
@@ -13,46 +9,59 @@
   padding: 0;
   z-index: -1;
   display: block;
+  padding-left: 0 !important;
 }
 
-.swiper-slide {
+.splashSwiper {
+  animation: appear 0.5s ease-in-out forwards;
+}
+
+div.splashPage .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+div.splashPage .swiper-slide {
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.swiper-slide img {
+div.splashPage .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.swiper-vertical > .swiper-pagination-bullets,
+div.splashPage .swiper-vertical > .swiper-pagination-bullets,
 .swiper-pagination-vertical.swiper-pagination-bullets {
   top: 90%;
 }
 
-.swiper-pagination-bullet {
+div.splashPage .swiper-pagination-bullet {
   background-color: transparent !important;
   border: 1px solid white !important;
   opacity: 1 !important;
   transform: scale(1.2);
 }
 
-.swiper-pagination-bullet-active {
+div.splashPage .swiper-pagination-bullet-active {
   background-color: white !important;
 }
 
 /* Contenido de cada Slide */
 
 h1.slideContent__title {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
   font-size: 3rem;
   color: white;
   text-align: center;
   text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.33);
-  padding: 0 2rem;
+  padding: 0 15rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -109,4 +118,10 @@ h1.slideContent__title {
 .slide4 {
   background-image: url("../assets/houses/house-4.jpg");
   background-color: var(--yellow-rgba);
+}
+
+@media (max-width: 768px) {
+  h1.slideContent__title {
+    padding: 0 2rem;
+  }
 }
