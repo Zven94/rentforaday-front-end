@@ -1,11 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import itemAPI from '../../API/itemAPI';
 
 let idUser = '0';
-
-console.log(idUser);
-
-const urlReserves = 'http://127.0.0.1:4000/api/v1/users/';
 
 const fetchReserves = createAsyncThunk('reserves/fetchReserves', async () => {
   if (localStorage.getItem('user') !== null) {
@@ -14,12 +11,12 @@ const fetchReserves = createAsyncThunk('reserves/fetchReserves', async () => {
       idUser = user.id;
     }
   }
-  const response = await axios.get(`${urlReserves}${idUser}/appointments`);
+  const response = await axios.get(`${itemAPI.baseURL}${itemAPI.listReserves}${idUser}/appointments`);
   return response.data;
 });
 
 const deleteReserve = createAsyncThunk('reserves/deleteReserve', async (reserveId) => {
-  const response = await axios.delete(`${urlReserves}${idUser}/appointments/${reserveId}`);
+  const response = await axios.delete(`${itemAPI.baseURL}${itemAPI.listReserves}${idUser}/appointments/${reserveId}`);
   return response.data;
 });
 
@@ -27,7 +24,7 @@ const postReserve = createAsyncThunk('reserves/postReserve', async (dataObject, 
   try {
     const options = {
       method: 'POST',
-      url: `${urlReserves}${idUser}/appointments`,
+      url: `${itemAPI.baseURL}${itemAPI.listReserves}${idUser}/appointments`,
       data: dataObject,
     };
 
@@ -45,7 +42,7 @@ const fetchItems = createAsyncThunk('items/fetchItems', async () => {
       idUser = user.id;
     }
   }
-  const response = await axios.get('http://127.0.0.1:4000/api/v1/items');
+  const response = await axios.get(`${itemAPI.baseURL}${itemAPI.listItems}`);
   return response.data;
 });
 
