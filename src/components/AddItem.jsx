@@ -15,7 +15,7 @@ export default function AddItem() {
     formData.append('item[city]', form.city.value);
     formData.append('item[description]', form.description.value);
     formData.append('item[price]', form.price.value);
-    formData.append('item[image]', form.image.files[0]);
+    formData.append('item[image]', form.image.value);
 
     try {
       const response = await fetch(`${itemAPI.baseURL}${itemAPI.listItems}`, {
@@ -65,9 +65,12 @@ export default function AddItem() {
                 </label>
               </div>
               <div>
-                <label htmlFor="image" className="form-label">
+                {/* <label htmlFor="image" className="form-label">
                   Image
                   <input type="file" id="image" name="image" className="form-control" />
+                </label> */}
+                <label htmlFor="image" className="form-label" aria-label="Image">
+                  <input type="text" id="image" name="image" placeholder="Image" className="form-control" />
                 </label>
               </div>
               <button type="submit" className="btn btn-primary">Add Item</button>
