@@ -1,0 +1,86 @@
+.itemDetail {
+  width: 100%;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  padding: 0 5rem;
+  z-index: -1;
+  flex-direction: row;
+}
+
+.itemDetail img {
+  width: 70%;
+  max-width: 70%;
+  margin-right: 5%;
+  padding-left: 5rem;
+}
+
+.itemContent {
+  width: 30%;
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Estilos para la tabla de datos */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilos para las celdas */
+.td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.back-buttom,
+.reserve-buttom {
+  width: 48%;
+  height: 3rem;
+  color: #fff;
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--green);
+  margin-top: 0.8rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(-0.1rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1));
+}
+
+.back-buttom:hover,
+.reserve-buttom:hover {
+  transform: scale(1.05);
+  background-color: var(--green-hover);
+  animation: fadeInTop 0.2s ease-in-out 0.7s forwards;
+}
+
+@media (max-width: 768px) {
+  .itemDetail {
+    flex-direction: column;
+    padding: 1rem 1.5rem !important;
+    gap: 1rem;
+  }
+
+  .itemDetail img {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    padding-left: 0;
+  }
+
+  .itemContent {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .itemPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
