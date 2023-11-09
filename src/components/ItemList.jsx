@@ -1,31 +1,97 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-// import './item.css';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Virtual, Navigation, Pagination } from 'swiper/modules';
+import icons from '../assets/icons';
+
+// Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import '../styles/ItemList.css';
+import '../styles/reservationList.css';
 
 const Item = () => {
   const items = useSelector((state) => state.item.items);
+  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  let itemContent;
+
+  if (items.length === 0) {
+    itemContent = (
+      <div className="container text-center d-flex justify-content-center align-items-center min-vh-100">
+        <h2>No items available</h2>
+      </div>
+    );
+  } else {
+    itemContent = (
+      <section className="reserves d-flex align-items-center min-vh-100">
+        <img className="custom-prev-button" src={icons.ButtonGreen} alt="left" />
+        <Swiper
+          className=""
+          modules={[Virtual, Navigation, Pagination]}
+          centeredSlides
+          pagination={{
+            type: 'progressbar',
+          }}
+          navigation={{
+            nextEl: '.custom-next-button',
+            prevEl: '.custom-prev-button',
+          }}
+          virtual
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 100,
+              allowTouchMove: true,
+            },
+            890: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+              allowTouchMove: false,
+            },
+            1180: {
+              slidesPerView: 3,
+              spaceBetween: 15,
+              allowTouchMove: false,
+            },
+          }}
+        >
+          {items.map((item, index) => (
+            <SwiperSlide key={item.id} virtualIndex={index} className="d-flex justify-content-center align-items-center min-vh-100">
+              <li key={item.id}>
+                <p className="fs-3 fw-bold">{item.name}</p>
+                <img src={`${item.image}`} alt={item.name} />
+                <div className="reserveCity d-flex fw-bold justify-content-around mx-auto">
+                  <p>{item.city}</p>
+                  <p>{item.date}</p>
+                </div>
+                <p className="dots">...........</p>
+                <p className="reserveDescription">{item.description}</p>
+                <button type="button" className="btn" onClick={() => navigate(`/items/${item.id}`)}>
+                  Ver más
+                </button>
+              </li>
+
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <img className="custom-next-button" src={icons.ButtonGreen} alt="left" />
+      </section>
+    );
+  }
 
   return (
-    <div className="w-100 h-100">
-      <h1>Items</h1>
-      <ul>
-        {items && items.length > 0 ? (
-          items.map((item) => (
-            <li key={item.id}>
-              <Link to={`/item/${item.id}`}>
-                {item.name}
-                {/* <h2>{item.price}</h2>
-                <h2>{item.city}</h2>
-                <h2>{item.description}</h2>
-                <img src={item.image} alt="" className="house-img" /> */}
-              </Link>
-            </li>
-          ))
-        ) : (
-          <li>No items available</li>
-        )}
-      </ul>
+    <div className="itemIndex w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+      <div className="itemTitle d-flex flex-column align-items-center justify-content-center position-absolute start-50 translate-middle-x">
+        <h1>Available Accommodations</h1>
+        <p>............</p>
+      </div>
+      {itemContent}
+      <button type="button" className="btn position-absolute back"><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
     </div>
   );
 };

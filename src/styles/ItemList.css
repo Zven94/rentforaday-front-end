@@ -1,0 +1,21 @@
+.itemIndex {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: -1;
+  padding-left: 0 !important;
+}
+
+.itemTitle {
+  top: 3rem;
+  width: 100%;
+
+  & p {
+    color: var(--mid-grey);
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
+}

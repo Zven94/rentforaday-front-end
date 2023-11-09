@@ -6,6 +6,7 @@ import { logoutUser, setLocalStorage } from '../redux/users/authSlice';
 
 import socialMediaIcons from '../assets/icons';
 import '../styles/sideBar.css';
+import { setItemId } from '../redux/reserves/reserveSlice';
 
 function Sidebar() {
   const dispatch = useDispatch();
@@ -18,6 +19,10 @@ function Sidebar() {
   if (localStorage.getItem('user') !== null) {
     dispatch(setLocalStorage(localStorage.getItem('user')));
   }
+
+  const handleResetItemId = () => {
+    dispatch(setItemId(null));
+  };
 
   return (
     <aside>
@@ -48,7 +53,7 @@ function Sidebar() {
 
                 <NavLink to="delete_item"><p>Delete item</p></NavLink>
                 <NavLink to="add_item"><p>Add item</p></NavLink>
-                <NavLink to="add_reserve"><p>Add Reserve</p></NavLink>
+                <NavLink to="add_reserve" onClick={() => handleResetItemId()}><p>Add Reserve</p></NavLink>
                 <NavLink to="reservation_list"><p>My reservations</p></NavLink>
                 <NavLink
                   to=""

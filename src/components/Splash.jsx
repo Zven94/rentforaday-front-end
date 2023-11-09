@@ -21,7 +21,7 @@ import 'swiper/css/pagination';
 import '../styles/Splash.css';
 
 const Splash = () => (
-  <>
+  <div className="splashPage">
     <h1 className="slideContent__title">Choose your next destination&apos;s accommodation.</h1>
     <Swiper
       className="splashSwiper"
@@ -80,7 +80,7 @@ const Splash = () => (
         </div>
       </SwiperSlide>
     </Swiper>
-  </>
+  </div>
 );
 
 export default Splash;
