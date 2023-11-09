@@ -1,5 +1,4 @@
 {
-  "homepage": "https://Zven94.github.io/rentforaday-front-end",
   "name": "rentforaday-front-end",
   "version": "0.1.0",
   "private": true,
@@ -10,7 +9,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@trendyol-js/react-carousel": "^3.0.2",
     "axios": "^1.6.0",
-    "gh-pages": "^6.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,9 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
