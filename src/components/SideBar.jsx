@@ -44,7 +44,9 @@ function Sidebar() {
           </button>
           <div className="offcanvas-header">
             <NavLink to="/items" className="text-center w-100 mt-5">
-              <p className="fs-3">Logo</p>
+              {/* <p className="fs-3">Logo</p> */}
+              <img src="https://i.postimg.cc/85Q5RWmG/Logo-final.png" alt="Logo" className="w-50 fs-3" />
+
             </NavLink>
           </div>
           {userStorage !== null

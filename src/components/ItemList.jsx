@@ -45,17 +45,17 @@ const Item = () => {
           breakpoints={{
             0: {
               slidesPerView: 1,
-              spaceBetween: 100,
+              spaceBetween: 400,
               allowTouchMove: true,
             },
             890: {
               slidesPerView: 2,
-              spaceBetween: 10,
+              spaceBetween: 200,
               allowTouchMove: false,
             },
             1180: {
-              slidesPerView: 3,
-              spaceBetween: 15,
+              slidesPerView: 2,
+              spaceBetween: 200,
               allowTouchMove: false,
             },
           }}
@@ -66,7 +66,7 @@ const Item = () => {
                 <p className="fs-3 fw-bold">{item.name}</p>
                 <img src={`${item.image}`} alt={item.name} />
                 <div className="reserveCity d-flex fw-bold justify-content-around mx-auto">
-                  <p>{item.city}</p>
+                  <p className="text-center">{item.city}</p>
                   <p>{item.date}</p>
                 </div>
                 <p className="dots">...........</p>
@@ -85,14 +85,14 @@ const Item = () => {
   }
 
   return (
-    <div className="itemIndex w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+    <>
       <div className="itemTitle d-flex flex-column align-items-center justify-content-center position-absolute start-50 translate-middle-x">
-        <h1>Available Accommodations</h1>
+        <h1 className="text-center titleAvailable">Available Accommodations</h1>
         <p>............</p>
       </div>
       {itemContent}
-      <button type="button" className="btn position-absolute back"><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
-    </div>
+      <button type="button" className="btn position-fixed back"><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
+    </>
   );
 };
 
