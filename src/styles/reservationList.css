@@ -22,10 +22,9 @@
 }
 
 .reserves {
-
   width: 80%;
   margin-left: 18rem;
-  
+
   & li {
     width: 100%;
     min-width: 10rem;
