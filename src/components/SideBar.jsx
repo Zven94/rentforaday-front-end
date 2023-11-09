@@ -1,9 +1,23 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
+import { logoutUser, setLocalStorage } from '../redux/users/authSlice';
+
 import socialMediaIcons from '../assets/icons';
 import '../styles/sideBar.css';
 
 function Sidebar() {
-  const currentUser = 'user';
+  const dispatch = useDispatch();
+  const { userStorage } = useSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
+  if (localStorage.getItem('user') !== null) {
+    dispatch(setLocalStorage(localStorage.getItem('user')));
+  }
 
   return (
     <aside>
@@ -28,7 +42,7 @@ function Sidebar() {
               <p className="fs-3">Logo</p>
             </NavLink>
           </div>
-          {currentUser.length > 0
+          {userStorage !== null
             ? (
               <div className="offcanvas-body">
 
@@ -36,13 +50,22 @@ function Sidebar() {
                 <NavLink to="add_item"><p>Add item</p></NavLink>
                 <NavLink to="add_reserve"><p>Add Reserve</p></NavLink>
                 <NavLink to="reservation_list"><p>My reservations</p></NavLink>
-                <NavLink to=""><p>Log out</p></NavLink>
+                <NavLink
+                  to=""
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                >
+                  <p>Log out</p>
+                </NavLink>
               </div>
             )
             : (
               <div className="offcanvas-body">
                 <NavLink to="registration"><p>Sign up</p></NavLink>
-                <NavLink to="login"><p>Log in</p></NavLink>
+                <NavLink to="login">
+                  <p>Log in</p>
+                </NavLink>
               </div>
             )}
           <div className="navFooter">

@@ -1,11 +1,15 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// to use toast notifications in the app
+import { Toaster } from 'react-hot-toast';
 
 // Elements for the router.
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import Splash from './components/Splash';
-// import Item from './components/ItemList';
+import Item from './components/ItemList';
+import Registration from './components/auth/Registration';
+import Login from './components/auth/Login';
 import ReservationsList from './components/ReservationsList';
 import AddItem from './components/AddItem';
 import AddReserve from './components/AddReserve';
@@ -21,18 +25,18 @@ const router = createBrowserRouter([
         path: '/',
         element: <Splash />,
       },
-      // {
-      //   path: 'items',
-      //   element: <Item />,
-      // },
-      // {
-      //   path: 'registration',
-      //   element: <Registration />,
-      // },
-      //   {
-      //     path: 'login',
-      //     element: <Login />,
-      //   },
+      {
+        path: 'items',
+        element: <Item />,
+      },
+      {
+        path: 'registration',
+        element: <Registration />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
+      },
       {
         path: 'delete_item',
         element: <DeleteItem />,
@@ -56,6 +60,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
+      <Toaster />
       <RouterProvider router={router} />
     </>
   );

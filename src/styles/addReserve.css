@@ -1,11 +1,11 @@
 .addReserve {
-  position: absolute;
+  margin-left: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-image: url(../assets/city.jpg);
   background-size: cover;
   z-index: 0;
@@ -16,7 +16,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: #98c210ce;
   }
 
@@ -31,6 +31,7 @@
     position: relative;
     z-index: 1;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 80%;
@@ -73,9 +74,10 @@
     }
   }
 
-  & .itemContent {
+  & .item {
     color: var(--light-grey);
     display: flex;
+    width: 20rem;
     align-items: center;
     justify-content: center;
     z-index: 1;
@@ -97,8 +99,14 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .addReserve {
+    margin-left: 0;
+
+    &::before {
+      height: 140vh;
+    }
+
     & h1 {
       font-size: 2rem;
     }
