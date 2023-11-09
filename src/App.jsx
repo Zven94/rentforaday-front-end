@@ -9,6 +9,7 @@ import Splash from './components/Splash';
 import ReservationsList from './components/ReservationsList';
 import AddItem from './components/AddItem';
 import AddReserve from './components/AddReserve';
+import DeleteItem from './components/DeleteItem';
 
 const router = createBrowserRouter([
   {
@@ -32,10 +33,10 @@ const router = createBrowserRouter([
       //     path: 'login',
       //     element: <Login />,
       //   },
-      //   {
-      //     path: 'delete_item',
-      //     element: <DeleteItem />,
-      //   },
+      {
+        path: 'delete_item',
+        element: <DeleteItem />,
+      },
       {
         path: 'add_item',
         element: <AddItem />,
