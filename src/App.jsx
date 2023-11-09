@@ -13,6 +13,7 @@ import Login from './components/auth/Login';
 import ReservationsList from './components/ReservationsList';
 import AddItem from './components/AddItem';
 import AddReserve from './components/AddReserve';
+import ItemDetail from './components/itemDetail';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'items',
         element: <Item />,
+      },
+      {
+        path: 'items/:itemId',
+        element: <ItemDetail />,
       },
       {
         path: 'registration',
