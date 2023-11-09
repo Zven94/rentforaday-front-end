@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { fetchReserves, deleteReserve } from '../redux/reserves/apiReserves';
+import { fetchReserves, deleteReserve, fetchItems } from '../redux/reserves/apiReserves';
 import { setIsDeleting } from '../redux/reserves/reserveSlice';
 import { setLocalStorage } from '../redux/users/authSlice';
 import icons from '../assets/icons';
@@ -14,12 +14,15 @@ import 'swiper/css/pagination';
 
 function ReservationsList() {
   const dispatch = useDispatch();
-  const { reserves, isDeleting, isLoading } = useSelector((state) => state.reserves);
+  const {
+    reserves, isDeleting, isLoading, items,
+  } = useSelector((state) => state.reserves);
   const { userStorage } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   let reserveContent;
 
   useEffect(() => {
+    dispatch(fetchItems());
     dispatch(fetchReserves());
     dispatch(setIsDeleting());
   }, [dispatch, isDeleting]);
@@ -31,6 +34,21 @@ function ReservationsList() {
 
   const handleBack = () => {
     navigate(-1);
+  };
+
+  const itemName = (itemId) => {
+    const item = items.find((item) => item.id === itemId);
+    return item ? item.name : 'Unknown';
+  };
+
+  const itemImage = (itemId) => {
+    const item = items.find((item) => item.id === itemId);
+    return item ? item.image : 'Unknown';
+  };
+
+  const itemDescription = (itemId) => {
+    const item = items.find((item) => item.id === itemId);
+    return item ? item.description : 'Unknown';
   };
 
   if (localStorage.getItem('user') !== null) {
@@ -81,14 +99,14 @@ function ReservationsList() {
             {reserves.map((reserve, index) => (
               <SwiperSlide key={reserve.id} virtualIndex={index} className="d-flex justify-content-center align-items-center min-vh-100">
                 <li key={reserve.id}>
-                  <p className="fs-3 fw-bold">{reserve.item.name}</p>
-                  <img src={`http://127.0.0.1:4000/assets/${reserve.item.image}`} alt={reserve.item.name} />
+                  <p className="fs-3 fw-bold">{itemName(reserve.item_id)}</p>
+                  <img src={`${itemImage(reserve.item_id)}`} alt={itemName(reserve.item_id)} />
                   <div className="reserveCity d-flex fw-bold justify-content-around mx-auto">
                     <p>{reserve.city}</p>
                     <p>{reserve.date}</p>
                   </div>
                   <p className="dots">...........</p>
-                  <p className="reserveDescription">{reserve.item.description}</p>
+                  <p>{itemDescription(reserve.item_id)}</p>
                   <button type="button" className="btn" onClick={() => handleClick(reserve.id)} disabled={isDeleting}>
                     {`Delete ${reserve.id}`}
                   </button>
