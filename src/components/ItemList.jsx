@@ -66,7 +66,7 @@ const Item = () => {
                 <p className="fs-3 fw-bold">{item.name}</p>
                 <img src={`${item.image}`} alt={item.name} />
                 <div className="reserveCity d-flex fw-bold justify-content-around mx-auto">
-                  <p>{item.city}</p>
+                  <p className="text-center">{item.city}</p>
                   <p>{item.date}</p>
                 </div>
                 <p className="dots">...........</p>
