@@ -45,17 +45,17 @@ const Item = () => {
           breakpoints={{
             0: {
               slidesPerView: 1,
-              spaceBetween: 100,
+              spaceBetween: 400,
               allowTouchMove: true,
             },
             890: {
               slidesPerView: 2,
-              spaceBetween: 10,
+              spaceBetween: 200,
               allowTouchMove: false,
             },
             1180: {
-              slidesPerView: 3,
-              spaceBetween: 15,
+              slidesPerView: 2,
+              spaceBetween: 200,
               allowTouchMove: false,
             },
           }}
@@ -85,14 +85,14 @@ const Item = () => {
   }
 
   return (
-    <div className="itemIndex w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+    <>
       <div className="itemTitle d-flex flex-column align-items-center justify-content-center position-absolute start-50 translate-middle-x">
-        <h1>Available Accommodations</h1>
+        <h1 className="text-center titleAvailable">Available Accommodations</h1>
         <p>............</p>
       </div>
       {itemContent}
-      <button type="button" className="btn position-absolute back"><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
-    </div>
+      <button type="button" className="btn position-fixed back"><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
+    </>
   );
 };
 

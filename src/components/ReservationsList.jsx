@@ -81,17 +81,17 @@ function ReservationsList() {
             breakpoints={{
               0: {
                 slidesPerView: 1,
-                spaceBetween: 100,
+                spaceBetween: 400,
                 allowTouchMove: true,
               },
               890: {
                 slidesPerView: 2,
-                spaceBetween: 10,
+                spaceBetween: 200,
                 allowTouchMove: false,
               },
               1180: {
-                slidesPerView: 3,
-                spaceBetween: 15,
+                slidesPerView: 2,
+                spaceBetween: 200,
                 allowTouchMove: false,
               },
             }}
@@ -131,7 +131,7 @@ function ReservationsList() {
         <p>............</p>
       </div>
       {reserveContent}
-      <button type="button" className="btn position-absolute back" onClick={() => handleBack()}><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
+      <button type="button" className="btn position-fixed back" onClick={() => handleBack()}><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
     </>
   );
 }
