@@ -11,7 +11,7 @@ export default function ItemDetail() {
   const item = useSelector((state) => state.item.items.find((item) => item.id === numericItemId));
 
   const handleItemId = () => {
-    dispatch(setItemId(numericItemId));
+    dispatch(setItemId(Number(numericItemId)));
   };
 
   return (
@@ -38,7 +38,7 @@ export default function ItemDetail() {
               </tbody>
             </table>
             <div className="itemPanel w-100 d-flex flex-row justify-content-between align-items-center">
-              <Link to="/" className="d-flex flex-column justify-content-center reserve-buttom" onClick={() => handleItemId()}>Reserve</Link>
+              <Link to="/add_reserve" className="d-flex flex-column justify-content-center reserve-buttom" onClick={() => handleItemId()}>Reserve</Link>
               <Link to="/" className="d-flex flex-column justify-content-center back-buttom">Back to items</Link>
             </div>
           </div>
