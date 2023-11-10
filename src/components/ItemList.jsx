@@ -1,10 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Virtual, Navigation, Pagination } from 'swiper/modules';
 import icons from '../assets/icons';
+import { fetchItems } from '../redux/items/itemSlice';
 
 // Swiper styles
 import 'swiper/css';
@@ -15,10 +15,13 @@ import '../styles/reservationList.css';
 
 const Item = () => {
   const items = useSelector((state) => state.item.items);
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   let itemContent;
+
+  useEffect(() => {
+    dispatch(fetchItems());
+  }, [dispatch]);
 
   if (items.length === 0) {
     itemContent = (
