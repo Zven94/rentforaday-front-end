@@ -9,7 +9,7 @@ import {
 import { setLocalStorage } from '../redux/users/authSlice';
 import '../styles/addReserve.css';
 
-function AddReserve() {
+const AddReserve = () => {
   const { userStorage } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
