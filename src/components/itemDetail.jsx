@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setItemId } from '../redux/reserves/reserveSlice';
 import '../styles/itemDetail.css';
 
-export default function ItemDetail() {
+const ItemDetail = () => {
   const { itemId } = useParams();
   const numericItemId = parseInt(itemId, 10);
   const dispatch = useDispatch();
@@ -48,4 +48,6 @@ export default function ItemDetail() {
       )}
     </>
   );
-}
+};
+
+export default ItemDetail;
