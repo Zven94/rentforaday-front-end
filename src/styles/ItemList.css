@@ -1,0 +1,17 @@
+.itemTitle {
+  top: 3rem;
+  width: 100%;
+
+  & p {
+    color: var(--mid-grey);
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .itemTitle {
+    top: 0;
+    padding-bottom: 2rem;
+  }
+}
