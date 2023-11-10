@@ -23,7 +23,7 @@
   animation: appear 0.2s ease-in-out 0.1s forwards;
 }
 
-span {
+div.deleteItemContent span {
   width: 75%;
   padding: 0.25rem 1rem;
   text-align: center;
@@ -35,7 +35,7 @@ span {
   /* background-color: rgba(153, 194, 16, 0.3); */
 }
 
-button {
+div.deleteItemContent button {
   border: 2px solid var(--green);
   background-color: rgba(153, 194, 16, 0.3);
   color: #fff;
@@ -46,7 +46,7 @@ button {
   filter: drop-shadow(-0.1rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1));
 }
 
-button:hover {
+div.deleteItemContent button:hover {
   transform: scale(1.1);
   border: 2px solid var(--green-hover);
   background-color: var(--green-hover);
