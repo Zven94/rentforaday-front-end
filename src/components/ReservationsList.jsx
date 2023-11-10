@@ -12,7 +12,7 @@ import Spinner from './Spinner';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-function ReservationsList() {
+const ReservationsList = () => {
   const dispatch = useDispatch();
   const {
     reserves, isDeleting, isLoading, items,
