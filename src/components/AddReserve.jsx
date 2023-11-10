@@ -147,6 +147,6 @@ const AddReserve = () => {
         : <h1 className="container-sm text-center">Sign in!! 👈</h1>}
     </>
   );
-}
+};
 
 export default AddReserve;

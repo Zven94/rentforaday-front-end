@@ -136,6 +136,6 @@ const ReservationsList = () => {
       <button type="button" className="btn position-fixed back" onClick={() => handleBack()}><img className="backa" src={icons.ButtonGreen} alt="left" /></button>
     </>
   );
-}
+};
 
 export default ReservationsList;
