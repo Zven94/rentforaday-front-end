@@ -2,7 +2,7 @@ import { useState } from 'react';
 import itemAPI from '../API/itemAPI';
 import '../styles/AddItem.css';
 
-export default function AddItem() {
+const AddItem = () => {
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (event) => {
@@ -83,4 +83,6 @@ export default function AddItem() {
       </div>
     </>
   );
-}
+};
+
+export default AddItem;

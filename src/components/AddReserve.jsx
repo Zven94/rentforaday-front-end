@@ -9,7 +9,7 @@ import {
 import { setLocalStorage } from '../redux/users/authSlice';
 import '../styles/addReserve.css';
 
-function AddReserve() {
+const AddReserve = () => {
   const { userStorage } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -147,6 +147,6 @@ function AddReserve() {
         : <h1 className="container-sm text-center">Sign in!! 👈</h1>}
     </>
   );
-}
+};
 
 export default AddReserve;

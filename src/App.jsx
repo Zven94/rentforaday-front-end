@@ -62,13 +62,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
-  return (
-    <>
-      <Toaster />
-      <RouterProvider router={router} />
-    </>
-  );
-}
+const App = () => (
+  <>
+    <Toaster />
+    <RouterProvider router={router} />
+  </>
+);
 
 export default App;
