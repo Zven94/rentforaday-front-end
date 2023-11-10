@@ -8,7 +8,7 @@ import socialMediaIcons from '../assets/icons';
 import '../styles/sideBar.css';
 import { setItemId } from '../redux/reserves/reserveSlice';
 
-function Sidebar() {
+const Sidebar = () => {
   const dispatch = useDispatch();
   const { userStorage } = useSelector((state) => state.auth);
 
@@ -89,5 +89,6 @@ function Sidebar() {
       </nav>
     </aside>
   );
-}
+};
+
 export default Sidebar;
