@@ -11,6 +11,7 @@
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
+  - [ ♦ Kanban Board](#kanban-board)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
@@ -43,7 +44,29 @@ Two repositories were created for its construction:
 
 Additionally, the API documentation is available [here](https://rent-for-a-day.onrender.com/api-docs/index.html).
 
+
 ---
+## ♦ Kanban Board <a name="kanban-board"></a>
+
+[Project's Kanban board](https://github.com/users/Zven94/projects/10)
+
+
+<br>
+<br>
+
+![photo_2023-11-09_16-45-50](https://github.com/Zven94/rentforaday-front-end/assets/15095218/b3df83c1-8877-469a-9ebd-6512f84730de)
+
+<br>
+<br>
+
+![FireShot Capture 407 - View 1 · Rent For A Day - github com](https://github.com/Zven94/rentforaday-front-end/assets/15095218/caa8c9ff-8c8e-406c-ba5f-e596fe1fa952)
+
+<br>
+<br>
+
+
+---
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
