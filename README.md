@@ -44,6 +44,10 @@ Two repositories were created for its construction:
 
 Additionally, the API documentation is available [here](https://rent-for-a-day.onrender.com/api-docs/index.html).
 
+We are a team of three students:
+- Team member 1 -   @Ruthmy - Ruth Abreu
+- Team member 2 -  @CesarHerr - César Herrera
+- Team member 3 -  @Zven94 - Nicolas Bolañez
 
 ---
 ## ♦ Kanban Board <a name="kanban-board"></a>
